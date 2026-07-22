@@ -1,230 +1,298 @@
-What is Data Analysis?
+# Tutorial 22 – Univariate, Bivariate & Multivariate Analysis (Part 1)
 
-Data Analysis means understanding data before building a Machine Learning model.
+## What is Data Analysis?
+
+Data Analysis means **understanding data before building a Machine Learning model.**
 
 It helps us:
+- Understand data distribution
+- Find relationships between variables
+- Detect outliers
+- Find patterns
+- Choose suitable ML algorithms
 
-Understand data distribution
-Find relationships between variables
-Detect outliers
-Find patterns
-Choose suitable ML algorithms
-1. Univariate Analysis
-Definition
+---
 
-Univariate Analysis means analyzing only one variable (one column) at a time.
+# 1. Univariate Analysis
 
-"Uni" = One
+## Definition
 
-Goal
+Univariate Analysis means analyzing **only one variable (one column)** at a time.
+
+> **"Uni" = One**
+
+### Goal
 
 Understand the distribution of a single feature.
 
-Questions answered
-What are the values?
-What is the average?
-Is the data skewed?
-Are there outliers?
-What is the spread?
-Example
+### Questions Answered
 
-Dataset
+- What are the values?
+- What is the average?
+- Is the data skewed?
+- Are there outliers?
+- What is the spread?
 
-Age
-18
-20
-22
-24
-25
+---
 
-Only Age is analyzed.
+## Example
 
-Numerical Features
+Dataset:
 
-For numerical columns we calculate:
+| Age |
+|-----|
+| 18 |
+| 20 |
+| 22 |
+| 24 |
+| 25 |
 
-Mean
-Median
-Mode
-Minimum
-Maximum
-Range
-Variance
-Standard Deviation
-Percentiles
+Only the **Age** column is analyzed.
 
-Visualization:
+---
 
-Histogram
-Box Plot
-Distribution Plot
-Categorical Features
+## Numerical Features
+
+For numerical columns, we calculate:
+
+- Mean
+- Median
+- Mode
+- Minimum
+- Maximum
+- Range
+- Variance
+- Standard Deviation
+- Percentiles
+
+### Visualization
+
+- Histogram
+- Box Plot
+- Distribution Plot
+
+---
+
+## Categorical Features
 
 Example:
 
-Gender
+| Gender |
+|--------|
+| Male |
+| Female |
+| Male |
+| Male |
+| Female |
 
-Male
-Female
-Male
-Male
-Female
+### Visualization
 
-Visualization:
+- Count Plot
+- Bar Chart
+- Pie Chart *(less preferred)*
 
-Count Plot
-Bar Chart
-Pie Chart (less preferred)
-Why Univariate Analysis?
+---
 
-It helps us
+## Why Univariate Analysis?
 
-Understand feature distribution
-Detect missing values
-Detect outliers
-Check skewness
-Decide preprocessing techniques
-2. Bivariate Analysis
-Definition
+It helps us:
 
-Bivariate Analysis means analyzing two variables together.
+- Understand feature distribution
+- Detect missing values
+- Detect outliers
+- Check skewness
+- Decide preprocessing techniques
 
-"Bi" = Two
+---
 
-Goal:
+# 2. Bivariate Analysis
+
+## Definition
+
+Bivariate Analysis means analyzing **two variables together**.
+
+> **"Bi" = Two**
+
+### Goal
+
 Find the relationship between two variables.
 
-Questions answered
-Does one variable affect another?
-Are they positively related?
-Are they negatively related?
-Is there any correlation?
-Example
-Hours Studied	Marks
-2	40
-4	60
-6	75
-8	90
+### Questions Answered
 
-As study hours increase,
-marks also increase.
+- Does one variable affect another?
+- Are they positively related?
+- Are they negatively related?
+- Is there any correlation?
 
-Positive Relationship.
+---
 
-Numerical vs Numerical
+## Example
 
-Examples
+| Hours Studied | Marks |
+|---------------|------:|
+| 2 | 40 |
+| 4 | 60 |
+| 6 | 75 |
+| 8 | 90 |
 
-Height vs Weight
+As study hours increase, marks also increase.
 
-Salary vs Experience
+**Positive Relationship**
 
-Visualization
+---
 
-Scatter Plot
-Line Plot
+## Numerical vs Numerical
 
-Statistical Measure
+### Examples
 
-Correlation
-Numerical vs Categorical
+- Height vs Weight
+- Salary vs Experience
 
-Examples
+### Visualization
 
-Salary vs Gender
+- Scatter Plot
+- Line Plot
 
-Age vs Survival
+### Statistical Measure
 
-Visualization
+- Correlation
 
-Box Plot
-Violin Plot
-Categorical vs Categorical
+---
 
-Examples
+## Numerical vs Categorical
 
-Gender vs Purchased
+### Examples
 
-Branch vs Placement
+- Salary vs Gender
+- Age vs Survival
 
-Visualization
+### Visualization
 
-Count Plot
-Crosstab
-Heatmap
-3. Multivariate Analysis
-Definition
+- Box Plot
+- Violin Plot
 
-Multivariate Analysis means analyzing more than two variables together.
+---
 
-"Multi" = Many
+## Categorical vs Categorical
 
-Goal:
+### Examples
+
+- Gender vs Purchased
+- Branch vs Placement
+
+### Visualization
+
+- Count Plot
+- Crosstab
+- Heatmap
+
+---
+
+# 3. Multivariate Analysis
+
+## Definition
+
+Multivariate Analysis means analyzing **more than two variables together**.
+
+> **"Multi" = Many**
+
+### Goal
+
 Understand how multiple features interact.
 
-Example
+---
 
-Predicting House Price using
+## Example
 
-Area
-Bedrooms
-Location
-Parking
-Age of House
+Predicting House Price using:
 
-Instead of one feature,
-many features are used together.
+- Area
+- Bedrooms
+- Location
+- Parking
+- Age of House
 
-Visualization
-Pair Plot
-Heatmap
-3D Scatter Plot
-Correlation Matrix
-Why Multivariate Analysis?
+Instead of using one feature, multiple features are used together.
 
-It helps us
+---
 
-Find feature interactions
-Detect multicollinearity
-Select important features
-Improve model accuracy
-Real ML Example
+## Visualization
+
+- Pair Plot
+- Heatmap
+- 3D Scatter Plot
+- Correlation Matrix
+
+---
+
+## Why Multivariate Analysis?
+
+It helps us:
+
+- Find feature interactions
+- Detect multicollinearity
+- Select important features
+- Improve model accuracy
+
+---
+
+# Real Machine Learning Example
 
 Suppose you want to predict whether a passenger survives on the Titanic.
 
 Features:
 
-Age
-Sex
-Fare
-Passenger Class
-Embarked
+- Age
+- Sex
+- Fare
+- Passenger Class
+- Embarked
 
 Analysis performed:
 
-Univariate: Distribution of Age.
-Bivariate: Age vs Survival, Sex vs Survival.
-Multivariate: Age + Sex + Fare + Pclass → Survival.
+- **Univariate:** Distribution of Age
+- **Bivariate:** Age vs Survival, Sex vs Survival
+- **Multivariate:** Age + Sex + Fare + Passenger Class → Survival
 
-This is exactly the process followed before training the ML model.
+This is exactly the process followed before training a Machine Learning model.
 
-Interview Questions
-Q1. What is Univariate Analysis?
+---
 
-Answer: Analyzing a single variable to understand its distribution, central tendency, spread, and outliers.
+# Interview Questions
 
-Q2. What is Bivariate Analysis?
+### Q1. What is Univariate Analysis?
 
-Answer: Analyzing two variables together to study their relationship or association.
+**Answer:**
 
-Q3. What is Multivariate Analysis?
+Univariate Analysis is the process of analyzing a single variable to understand its distribution, central tendency, spread, and outliers.
 
-Answer: Analyzing three or more variables simultaneously to understand complex relationships and interactions.
+---
 
-Q4. Give one example of each.
+### Q2. What is Bivariate Analysis?
 
-Univariate: Age distribution
+**Answer:**
 
-Bivariate: Hours Studied vs Marks
+Bivariate Analysis is the process of analyzing two variables together to study the relationship or association between them.
 
-Multivariate: House Price prediction using Area, Bedrooms, Location, and Age of House
+---
+
+### Q3. What is Multivariate Analysis?
+
+**Answer:**
+
+Multivariate Analysis is the process of analyzing three or more variables simultaneously to understand their interactions and relationships.
+
+---
+
+### Q4. Give one example of each.
+
+**Answer:**
+
+**Univariate:**
+- Age distribution
+
+**Bivariate:**
+- Hours Studied vs Marks
+
+**Multivariate:**
+- House Price prediction using Area, Bedrooms, Location, and Age of House
