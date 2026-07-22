@@ -1,0 +1,174 @@
+1. What is Linear Regression?
+
+Linear Regression is a supervised machine learning algorithm used to predict a continuous numerical value.
+
+Examples:
+
+House price prediction
+Salary prediction
+Sales prediction
+
+It finds the best fitting straight line between input (X) and output (Y).
+
+y=mx+b
+m
+m
+b
+b
+2. Mathematical Equation
+Y=mX+b
+
+Where:
+
+Y → Predicted output
+X → Input feature
+m → Slope (how much Y changes when X changes)
+b → Intercept (value of Y when X = 0)
+
+Example:
+
+Experience → Salary
+
+More experience = Higher salary
+3. How Linear Regression Works?
+
+The model tries to find the line that has the minimum error between:
+
+Actual Value
+      |
+      |
+Predicted Value
+
+The difference is called residual error.
+
+Formula:
+
+Error=Actual−Predicted
+4. Cost Function (MSE)
+
+Linear Regression minimizes error using Mean Squared Error (MSE).
+
+MSE=
+n
+1
+	​
+
+∑(y−
+y
+^
+	​
+
+)
+2
+
+Why square errors?
+
+Because positive and negative errors should not cancel each other.
+
+5. Gradient Descent
+
+Gradient Descent is an optimization technique used to reduce error.
+
+Steps:
+
+Start with random values
+Calculate error
+Update parameters (m and b)
+Repeat until error becomes minimum
+6. Types of Linear Regression
+Simple Linear Regression
+
+One input feature.
+
+Example:
+
+Experience → Salary
+
+Equation:
+
+Y=mX+b
+Multiple Linear Regression
+
+Multiple features.
+
+Example:
+
+Area
+Bedrooms
+Location
+       ↓
+    House Price
+
+Equation:
+
+Y=b
+0
+	​
+
++b
+1
+	​
+
+X
+1
+	​
+
++b
+2
+	​
+
+X
+2
+	​
+
+7. Assumptions
+
+Linear Regression works better when:
+
+Relationship between X and Y is linear
+Features are not highly correlated
+Outliers are handled
+Errors are normally distributed
+8. Evaluation Metrics
+MAE
+
+Average absolute error.
+
+MSE
+
+Squares errors and penalizes large mistakes.
+
+RMSE
+
+Square root of MSE.
+
+R² Score
+
+Shows how well the model explains the data.
+
+Example:
+
+R² = 0.90
+
+90% of variation is explained by the model
+9. Python Implementation
+from sklearn.linear_model import LinearRegression
+
+model = LinearRegression()
+
+model.fit(X_train, y_train)
+
+prediction = model.predict(X_test)
+Interview Questions
+1. What is Linear Regression?
+
+A supervised learning algorithm that predicts continuous values by finding the best linear relationship between input and output.
+
+2. Why use Linear Regression?
+Simple
+Fast
+Easy to interpret
+Good baseline model
+3. Effect of Outliers?
+
+Outliers can affect the regression line because errors are squared.
