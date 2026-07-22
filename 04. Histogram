@@ -1,0 +1,121 @@
+Histogram
+
+A Histogram is a graphical representation of the distribution of numerical (continuous) data. It divides the data into intervals called bins and shows how many values fall into each bin.
+
+Unlike a bar chart, histogram bars touch each other because the data is continuous.
+
+Definition
+
+A histogram is a plot that displays the frequency distribution of a continuous variable using adjacent bars.
+
+Example
+
+Suppose students' marks are:
+
+32, 35, 37, 41, 43, 45, 46, 52, 55, 58, 61, 64, 68, 72, 75
+
+Marks (Bins)	Frequency
+30–39	3
+40–49	4
+50–59	3
+60–69	3
+70–79	2
+
+Histogram:
+
+30-39  ███
+40-49  ████
+50-59  ███
+60-69  ███
+70-79  ██
+
+When to Use Histogram
+
+Use a histogram when:
+
+Data is continuous
+You want to understand the distribution
+You want to detect:
+Skewness
+Outliers
+Peaks (modes)
+Spread of data
+Histogram in Python
+import matplotlib.pyplot as plt
+
+plt.hist(df['Age'], bins=10)
+plt.xlabel("Age")
+plt.ylabel("Frequency")
+plt.title("Age Distribution")
+plt.show()
+Meaning of bins
+
+Bins divide the data into groups.
+
+Example:
+
+Age:
+18 20 21 23 25 28 30 35 40
+
+bins = 3
+
+18–25
+26–33
+34–40
+
+More bins → More detailed graph
+
+Fewer bins → Simpler graph
+
+Types of Distribution Seen in Histograms
+1. Normal Distribution
+Bell-shaped
+Mean ≈ Median ≈ Mode
+      █
+    ████
+  ███████
+██████████
+  ███████
+    ████
+      █
+2. Right-Skewed (Positive Skew)
+Tail towards the right
+Mean > Median
+████████
+██████
+████
+██
+█
+3. Left-Skewed (Negative Skew)
+Tail towards the left
+Mean < Median
+      █
+     ██
+   ████
+ ██████
+████████
+4. Uniform Distribution
+
+All bars have almost equal height.
+
+████
+████
+████
+████
+5. Bimodal Distribution
+
+Two peaks are present.
+
+███
+█████
+███
+
+      ███
+     █████
+      ███
+Histogram vs Bar Chart
+Histogram	Bar Chart
+Continuous data	Categorical data
+Bars touch each other	Bars have gaps
+Shows distribution	Compares categories
+X-axis contains intervals (bins)	X-axis contains categories
