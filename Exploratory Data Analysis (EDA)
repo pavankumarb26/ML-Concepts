@@ -1,0 +1,117 @@
+📖 Definition
+
+Exploratory Data Analysis (EDA) is the process of understanding, analyzing, and preparing a dataset before building a Machine Learning model. It helps identify missing values, outliers, data distributions, feature relationships, and data quality issues.
+
+Simple Definition:
+EDA is the first step in every Machine Learning project where we understand the data before training the model.
+
+🎯 Why Do We Need EDA?
+To understand the dataset.
+To identify missing values and duplicates.
+To detect outliers and incorrect data.
+To analyze relationships between features.
+To clean and prepare data for Machine Learning.
+To improve model accuracy and reliability.
+📚 Key Concepts
+Dataset Inspection
+Missing Values
+Duplicate Records
+Data Types (Numerical & Categorical)
+Outlier Detection
+Data Distribution
+Relationship Between Features
+Feature Selection
+Data Cleaning
+Feature Encoding
+🛠️ Important Functions / Methods
+Function	Purpose
+head()	Display first 5 rows
+shape	Number of rows and columns
+info()	Data types and missing values
+describe()	Statistical summary
+isnull().sum()	Count missing values
+duplicated().sum()	Count duplicate rows
+drop()	Remove unnecessary columns
+fillna()	Fill missing values
+value_counts()	Count unique values
+pd.get_dummies()	Convert categorical data into numerical data
+Common Visualization Techniques
+Count Plot
+Histogram
+Box Plot
+Heatmap
+Pair Plot
+📊 Example (Titanic Dataset)
+Objective
+
+Predict whether a passenger survived.
+
+Target Variable
+Survived
+
+0 → Did Not Survive
+1 → Survived
+EDA Steps Performed
+Loaded the dataset.
+Checked dataset structure using info() and shape.
+Identified missing values.
+Removed the Cabin column because it contained many missing values.
+Filled missing Age values.
+Converted Sex and Embarked into numerical values using pd.get_dummies().
+Removed unnecessary columns like Name and Ticket.
+Performed visualization to understand feature relationships.
+Prepared the cleaned dataset for Logistic Regression.
+💼 Interview Questions & Answers
+Q1. What is Exploratory Data Analysis (EDA)?
+
+Answer:
+
+EDA is the process of understanding, analyzing, and preparing a dataset before building a Machine Learning model. It helps identify missing values, outliers, feature relationships, and prepares the data for model training.
+
+Q2. Why is EDA important?
+
+Answer:
+
+EDA improves data quality by identifying missing values, duplicates, and outliers. It also helps understand the dataset, select useful features, and build better-performing Machine Learning models.
+
+Q3. What are the common steps in EDA?
+
+Answer:
+
+Understand the dataset
+Check missing values
+Check duplicates
+Analyze data types
+Detect outliers
+Visualize data
+Clean the dataset
+Prepare data for model training
+Q4. Why do we check missing values?
+
+Answer:
+
+Missing values reduce data quality and can negatively affect Machine Learning models. They should be handled by removing them or filling them with suitable values like mean, median, or mode.
+
+Q5. Why do we convert categorical variables into numerical values?
+
+Answer:
+
+Most Machine Learning algorithms work only with numerical data. Therefore, categorical features such as Sex and Embarked are converted into numerical values using encoding techniques like pd.get_dummies().
+
+Q6. Why was the Cabin column removed in the Titanic dataset?
+
+Answer:
+
+The Cabin column contained a large number of missing values. Since most of the data was unavailable, it was removed to simplify preprocessing and improve data quality.
+
+Q7. Why was Logistic Regression used in the Titanic dataset?
+
+Answer:
+
+The target variable Survived contains only two classes (0 and 1), making it a binary classification problem. Logistic Regression is suitable for predicting binary outcomes.
+
+Q8. Explain the EDA you performed on the Titanic dataset.
+
+Answer:
+
+I inspected the dataset, checked missing values and data types, removed the Cabin column due to excessive missing values, filled missing Age values, encoded categorical features like Sex and Embarked, removed unnecessary columns such as Name and Ticket, visualized relationships between features, and prepared the cleaned dataset for Logistic Regression.
