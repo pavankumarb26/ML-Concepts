@@ -1,0 +1,174 @@
+Z-Score (Standard Score) – Data Science Notes
+
+Z-Score is one of the most important statistical concepts in Machine Learning and Data Science. It tells us how far a data point is from the mean, measured in terms of standard deviations.
+
+Definition
+
+A Z-Score indicates the number of standard deviations a value is above or below the mean.
+
+Positive Z-Score → Value is above the mean.
+Negative Z-Score → Value is below the mean.
+Zero Z-Score → Value is exactly equal to the mean.
+
+formula: Z=  (X − μ​) / σ
+Where:
+
+X = Data value
+μ (Mu) = Mean
+σ (Sigma) = Standard Deviation
+Simple Example
+
+Suppose the marks of students are:
+
+40, 50, 60, 70, 80
+
+Mean = 60
+
+Standard Deviation = 10
+
+Find the Z-Score of 80.
+
+Z= (80−60)/10
+	​=2
+
+Interpretation:
+
+The student scored 2 standard deviations above the average.
+
+Another Example
+
+Height = 150 cm
+
+Mean = 160 cm
+
+Standard Deviation = 5 cm
+
+Z=(150−160)/5
+	​=−2
+
+This means the person's height is 2 standard deviations below the average.
+
+Interpretation Table
+Z-Score	Meaning
+0	Exactly average
++1	1 Standard Deviation above mean
++2	2 Standard Deviations above mean
+-1	1 Standard Deviation below mean
+-2	2 Standard Deviations below mean
+Why is Z-Score Used?
+1. Detect Outliers
+
+A value is usually considered an outlier if:
+
+Z > +3
+Z < -3
+
+Example:
+
+Marks = 150
+
+Mean = 60
+
+Standard Deviation = 20
+
+Z=
+20
+150−60
+	​
+
+=4.5
+
+Since 4.5 > 3, it is an outlier.
+
+2. Feature Scaling (Standardization)
+
+Many ML algorithms work better when features have similar scales.
+
+Standardization converts data into Z-Scores.
+
+Examples:
+
+Height
+Salary
+Age
+
+After standardization:
+
+Mean = 0
+Standard Deviation = 1
+
+Algorithms like:
+
+Logistic Regression
+SVM
+KNN
+PCA
+Neural Networks
+
+perform better after standardization.
+
+3. Compare Different Distributions
+
+Suppose:
+
+Student A
+
+Maths = 90
+Mean = 80
+SD = 5
+
+Student B
+
+Physics = 85
+Mean = 70
+SD = 10
+
+Instead of comparing raw marks, compare their Z-Scores.
+
+The student with the higher Z-Score performed better relative to their class.
+
+Properties of Z-Score
+Mean becomes 0
+Standard Deviation becomes 1
+Unitless value
+Can be positive or negative
+Used for standardization and outlier detection
+Real-Life Example
+
+Imagine the average salary in a company is ₹50,000 with a standard deviation of ₹10,000.
+
+Employee salary = ₹70,000
+
+Z=
+10000
+70000−50000
+	​
+
+=2
+
+The employee earns 2 standard deviations above the average salary.
+
+Interview Questions
+1. What is a Z-Score?
+
+A Z-Score measures how many standard deviations a data point is from the mean.
+
+2. What does a negative Z-Score mean?
+
+The value lies below the mean.
+
+3. What does a positive Z-Score mean?
+
+The value lies above the mean.
+
+4. When is Z-Score used?
+Outlier detection
+Data standardization
+Comparing values from different datasets
+Machine Learning preprocessing
+5. What is considered an outlier using Z-Score?
+
+Generally:
+
+Z > 3
+Z < -3
