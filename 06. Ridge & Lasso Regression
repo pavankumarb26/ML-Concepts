@@ -1,0 +1,293 @@
+Ridge & Lasso Regression – In-Depth Intuition
+Prerequisites
+
+Before learning Ridge and Lasso, you should know:
+
+Linear Regression
+Cost Function (MSE)
+Gradient Descent (basic idea)
+Overfitting
+Bias-Variance Tradeoff
+Why Do We Need Ridge & Lasso?
+
+Imagine we trained a Linear Regression model.
+
+It performs:
+
+✅ Very well on training data
+❌ Poorly on test data
+
+This is called Overfitting.
+
+Why does overfitting happen?
+Too many features
+Noise in data
+Highly correlated features
+Model learns unnecessary patterns
+
+We need a way to make the model simpler.
+
+This is where Regularization comes in.
+
+What is Regularization?
+
+Regularization is a technique that penalizes large coefficient values so the model becomes simpler and generalizes better.
+
+Instead of only minimizing prediction error, we also penalize complexity.
+
+Goal:
+
+Reduce overfitting
+Improve generalization
+Prevent very large coefficients
+Recall Linear Regression Cost Function
+
+For Linear Regression:
+
+Cost=MSE
+
+The model only tries to reduce prediction error.
+
+If coefficients become very large, Linear Regression doesn't care.
+
+Example:
+
+Price = 2x1 + 150x2 + 400x3
+
+Large coefficients may indicate overfitting.
+
+Ridge Regression (L2 Regularization)
+Idea
+
+Ridge adds a penalty equal to the square of the coefficients.
+
+New Cost Function:
+
+Cost=MSE+λ∑w
+i
+2
+	​
+
+
+where:
+
+MSE → Prediction error
+λ (lambda) → Regularization strength
+w → Model coefficients
+Ridge Intuition
+
+Suppose the model learns:
+
+x1 = 250
+x2 = 300
+x3 = -450
+
+These huge values increase the penalty.
+
+The optimizer reduces them:
+
+250 → 40
+300 → 60
+-450 → -70
+
+The coefficients become smaller.
+
+Important: Ridge makes coefficients small, but rarely exactly zero.
+
+Effect of Lambda (λ)
+λ = 0
+
+No regularization.
+
+Same as Linear Regression.
+
+Small λ
+Slight penalty
+Small coefficient reduction
+Good balance
+Large λ
+Strong penalty
+Coefficients become very small
+May underfit
+Advantages of Ridge
+Reduces overfitting
+Handles multicollinearity well
+Uses all features
+Stable model
+Disadvantages of Ridge
+Does not remove unnecessary features
+Less interpretable
+All variables remain in the model
+Lasso Regression (L1 Regularization)
+Idea
+
+Lasso adds the absolute values of coefficients as the penalty.
+
+New Cost Function:
+
+Cost=MSE+λ∑∣w
+i
+	​
+
+∣
+Lasso Intuition
+
+Suppose the model learns:
+
+x1 = 100
+x2 = 60
+x3 = 2
+x4 = 0.5
+
+Lasso realizes that:
+
+x3 contributes very little
+x4 contributes almost nothing
+
+Instead of just reducing them:
+
+x3 → 0
+x4 → 0
+
+The features are removed from the model.
+
+This is called Feature Selection.
+
+Why Does Lasso Remove Features?
+
+Because the absolute value penalty encourages coefficients to become exactly zero.
+
+Example:
+
+Before:
+
+Price = 10x1 + 8x2 + 2x3 + 0.5x4
+
+After Lasso:
+
+Price = 10x1 + 8x2
+
+Features x3 and x4 are eliminated.
+
+Advantages of Lasso
+Reduces overfitting
+Performs automatic feature selection
+Produces simpler models
+Easy to interpret
+Disadvantages of Lasso
+May remove useful correlated features
+Can underfit if λ is too high
+Less stable with highly correlated variables
+Ridge vs Lasso
+Ridge	Lasso
+L2 Regularization	L1 Regularization
+Uses squared coefficients	Uses absolute coefficients
+Shrinks coefficients	Shrinks and removes coefficients
+Feature selection ❌	Feature selection ✅
+Handles multicollinearity well	Can drop correlated features
+Better when most features matter	Better when many features are irrelevant
+Ridge Example
+
+Features:
+
+Age
+Salary
+Experience
+Height
+
+Ridge learns:
+
+Age = 0.9
+Salary = 1.2
+Experience = 0.6
+Height = 0.05
+
+Every feature remains.
+
+Lasso Example
+
+Same data:
+
+Age = 0.9
+Salary = 1.2
+Experience = 0
+Height = 0
+
+The model removes Experience and Height because they contribute very little.
+
+When to Use Ridge?
+
+Use Ridge when:
+
+Most features are useful
+Features are highly correlated
+Need stable predictions
+Don't want to remove variables
+
+Examples:
+
+House Price Prediction
+Stock Price Prediction
+Sales Forecasting
+When to Use Lasso?
+
+Use Lasso when:
+
+Many unnecessary features exist
+Need feature selection
+Want a simple model
+Need better interpretability
+
+Examples:
+
+Medical diagnosis
+Gene selection
+Text classification
+Ridge vs Linear Regression
+Linear Regression	Ridge
+Can overfit	Less overfitting
+Large coefficients allowed	Penalizes large coefficients
+Higher variance	Lower variance
+Better training accuracy	Better test accuracy
+Lasso vs Linear Regression
+Linear Regression	Lasso
+Uses every feature	Removes unimportant features
+No feature selection	Automatic feature selection
+More complex	Simpler model
+Common Mistakes
+Choosing a very high λ can cause underfitting.
+Ridge is not used for feature selection.
+Lasso may remove useful correlated features.
+Always standardize features before applying Ridge or Lasso because the penalty depends on coefficient magnitudes.
+Interview Questions
+1. Why do we use Ridge Regression?
+
+Answer: To reduce overfitting by shrinking coefficient values using L2 regularization.
+
+2. Why do we use Lasso Regression?
+
+Answer: To reduce overfitting and perform automatic feature selection by making some coefficients exactly zero.
+
+3. What is Regularization?
+
+Answer: A technique that adds a penalty to the cost function to reduce model complexity and improve generalization.
+
+4. Which regularization is used in Ridge?
+
+Answer: L2 Regularization (squared coefficients).
+
+5. Which regularization is used in Lasso?
+
+Answer: L1 Regularization (absolute coefficients).
+
+6. Which algorithm performs feature selection?
+
+Answer: Lasso Regression.
+
+7. Which algorithm handles multicollinearity better?
+
+Answer: Ridge Regression.
+
+8. What does λ (lambda) control?
+
+Answer: The strength of regularization. A larger λ increases the penalty on coefficients.
