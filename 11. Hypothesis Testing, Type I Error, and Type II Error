@@ -1,0 +1,348 @@
+Hypothesis Testing, Type I Error, and Type II Error
+
+Hypothesis Testing is one of the most important concepts in Statistics and Machine Learning. It helps us decide whether the evidence from sample data is strong enough to support a claim about a population.
+
+Why Do We Need Hypothesis Testing?
+
+Suppose a medicine company claims:
+
+"Our new medicine cures COVID in 5 days."
+
+Can we believe this claim immediately?
+
+No.
+
+We collect sample data, perform statistical analysis, and then decide whether there is enough evidence to support the claim.
+
+This process is called Hypothesis Testing.
+
+Real-Life Analogy
+
+Imagine a judge in a court.
+
+A person is accused of a crime.
+
+The judge starts with the assumption:
+
+"The person is innocent."
+
+Only if there is strong evidence does the judge declare the person guilty.
+
+Hypothesis testing works in exactly the same way.
+
+What is a Hypothesis?
+
+A hypothesis is an assumption or claim about a population that we want to test using sample data.
+
+There are two hypotheses:
+
+Null Hypothesis (H₀)
+Alternative Hypothesis (H₁ or Hₐ)
+Null Hypothesis (H₀)
+
+The Null Hypothesis represents the default assumption.
+
+It usually states:
+
+No effect
+No difference
+No relationship
+No improvement
+Example
+
+A coaching institute claims:
+
+Average Marks = 70
+
+Then,
+
+H₀: μ = 70
+Alternative Hypothesis (H₁)
+
+The Alternative Hypothesis is what we want to prove.
+
+It states:
+
+There is an effect
+There is a difference
+There is an improvement
+
+Example:
+
+H₁: μ ≠ 70
+Another Example
+
+Suppose a company claims:
+
+Average battery life = 10 hours
+
+Then,
+
+H₀: μ = 10
+
+Alternative:
+
+H₁: μ ≠ 10
+Steps of Hypothesis Testing
+Step 1
+
+State:
+
+Null Hypothesis
+Alternative Hypothesis
+Step 2
+
+Choose Significance Level
+
+Usually:
+
+α = 0.05
+
+This means we are willing to accept a 5% chance of making a wrong decision.
+
+Step 3
+
+Collect Sample Data
+
+Example:
+
+Take a sample of 100 batteries.
+
+Step 4
+
+Calculate Test Statistic
+
+Examples:
+
+Z-Test
+T-Test
+Chi-Square Test
+ANOVA
+Step 5
+
+Calculate p-value
+
+The p-value tells us how likely it is to observe the sample data if the Null Hypothesis is actually true.
+
+Step 6
+
+Make Decision
+
+If
+
+p-value < α
+
+Reject H₀.
+
+Otherwise,
+
+Fail to Reject H₀.
+
+What is p-value?
+
+The p-value is the probability of observing the sample data (or something more extreme) assuming the Null Hypothesis is true.
+
+Rule
+
+If
+
+p < 0.05
+
+Reject H₀.
+
+Otherwise,
+
+Do not reject H₀.
+
+Decision Table
+p-value	Decision
+<0.05	Reject H₀
+≥0.05	Fail to Reject H₀
+Possible Decisions
+
+There are only two possible decisions:
+
+Reject H₀
+Fail to Reject H₀
+
+Notice:
+
+We never say "Accept H₀."
+
+We only say:
+
+"There is not enough evidence to reject it."
+
+Type I Error
+
+Type I Error happens when:
+
+We reject the Null Hypothesis even though it is actually true.
+
+This is called a False Positive.
+
+Court Analogy
+
+An innocent person is sent to jail.
+
+Reality:
+
+Person is Innocent
+
+Decision:
+
+Guilty
+
+Wrong decision.
+
+Medical Example
+
+Reality:
+
+Patient is healthy.
+
+Test Result:
+
+Disease Detected
+
+Wrong diagnosis.
+
+Probability
+
+The probability of Type I Error is:
+
+α (Alpha)
+
+Usually:
+
+5%
+Type II Error
+
+Type II Error happens when:
+
+We fail to reject the Null Hypothesis even though it is false.
+
+This is called a False Negative.
+
+Court Example
+
+Reality:
+
+Person is guilty.
+
+Decision:
+
+Not Guilty
+
+Wrong decision.
+
+Medical Example
+
+Reality:
+
+Patient has cancer.
+
+Test Result:
+
+Healthy
+
+Very dangerous.
+
+Probability
+
+Probability:
+
+β (Beta)
+Power of Test
+
+Power tells us how good the test is at detecting a real effect.
+
+Formula:
+
+Power = 1 − β
+
+Higher power means a better chance of correctly rejecting a false Null Hypothesis.
+
+Type I vs Type II Error
+Type I Error	Type II Error
+Reject True H₀	Fail to Reject False H₀
+False Positive	False Negative
+Probability = α	Probability = β
+Example
+
+Suppose:
+
+Company claims:
+
+Average salary = ₹50,000
+
+Hypotheses:
+
+H₀: μ = 50,000
+H₁: μ ≠ 50,000
+
+After collecting sample data:
+
+p-value = 0.02
+
+Since
+
+0.02 < 0.05
+
+Reject H₀.
+
+Conclusion:
+
+There is sufficient statistical evidence that the average salary differs from ₹50,000.
+
+Python Example
+from scipy.stats import ttest_1samp
+
+sample = [48, 52, 49, 51, 47, 50, 53]
+
+t_stat, p_value = ttest_1samp(sample, popmean=50)
+
+print("T Statistic:", t_stat)
+print("P-value:", p_value)
+
+alpha = 0.05
+
+if p_value < alpha:
+    print("Reject Null Hypothesis")
+else:
+    print("Fail to Reject Null Hypothesis")
+Interview Questions
+1. What is Hypothesis Testing?
+
+A statistical method used to determine whether there is enough evidence from sample data to support or reject a claim about a population.
+
+2. What is the Null Hypothesis?
+
+The default assumption that there is no effect, no difference, or no relationship.
+
+3. What is the Alternative Hypothesis?
+
+The claim that there is an effect, difference, or relationship, which the researcher wants to test.
+
+4. What is a p-value?
+
+The probability of observing the sample data (or something more extreme) if the Null Hypothesis is true.
+
+5. What is Type I Error?
+
+Rejecting a true Null Hypothesis (False Positive).
+
+6. What is Type II Error?
+
+Failing to reject a false Null Hypothesis (False Negative).
+
+7. What is the significance level (α)?
+
+The maximum acceptable probability of making a Type I Error, commonly set to 0.05 (5%).
+
+8. What is the Power of a Test?
+
+The probability of correctly rejecting a false Null Hypothesis.
+
+Power=1−β
+	​
