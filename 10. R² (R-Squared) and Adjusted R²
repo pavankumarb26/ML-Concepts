@@ -1,0 +1,273 @@
+R² (R-Squared) and Adjusted R² – Clearly Explained
+
+After building a Linear Regression model, an important question is:
+
+"How good is my model?"
+
+One of the most common metrics used to answer this is R² (R-Squared). However, when there are multiple features, Adjusted R² is often a better metric.
+
+Why Do We Need R²?
+
+Suppose we build a model to predict house prices.
+
+We get predictions, but how do we know whether the model is performing well?
+
+We need a metric that tells us how much of the variation in the target variable is explained by the model.
+
+This metric is called R² Score.
+
+Real-Life Analogy
+
+Imagine a teacher trying to explain why students score different marks.
+
+Possible reasons:
+
+Hours Studied
+Attendance
+Sleep
+Practice
+Intelligence
+
+If these factors explain 80% of the differences in marks, then:
+
+R² = 0.80
+
+The remaining 20% may be due to luck, health, exam difficulty, or other unknown factors.
+
+What is R²?
+
+R² measures how well the regression model explains the variation in the target variable.
+
+Higher R² → Better fit
+Lower R² → Poor fit
+Formula
+R **2 = 1 − SSResidual / (SSTotal)
+
+Where:
+
+SSResidual (SSE) = Sum of Squared Errors (prediction errors)
+SSTotal (SST) = Total variation in the target values
+Intuition Behind the Formula
+
+Suppose:
+
+Total variation in data = 100
+
+After training the model:
+
+Unexplained variation = 20
+
+Then,
+
+R² = 1 - (20 / 100)
+   = 0.80
+
+Meaning:
+
+The model explains 80% of the variation in the data.
+
+Interpretation of R²
+R² Score	Interpretation
+0	Model explains nothing
+0.25	25% variation explained
+0.50	50% variation explained
+0.75	75% variation explained
+1.0	Perfect prediction
+Example
+
+Suppose:
+
+Actual Prices
+
+40
+50
+60
+70
+80
+
+Predicted Prices
+
+41
+49
+61
+69
+80
+
+The predictions are very close to the actual values.
+
+Result:
+
+R² = 0.98
+
+This means:
+
+The model explains 98% of the variation in house prices.
+
+Can R² Be Negative?
+
+Yes.
+
+This happens when the model performs worse than simply predicting the mean of the target variable.
+
+Example:
+
+R² = -0.4
+
+This indicates a very poor model.
+
+Problem with R²
+
+Suppose we start adding unnecessary features.
+
+Example:
+
+Original Features:
+
+Area
+Bedrooms
+
+R²:
+
+0.82
+
+Now add:
+
+Car Color
+Owner Name Length
+House Number
+
+These features have no real relationship with house price.
+
+Yet, R² may increase slightly:
+
+0.83
+
+Why?
+
+Because R² never decreases when new features are added.
+
+Even useless features can inflate it.
+
+This is the biggest limitation of R².
+
+What is Adjusted R²?
+
+Adjusted R² improves upon R² by penalizing unnecessary features.
+
+If a new feature genuinely improves the model:
+
+Adjusted R² increases.
+
+If the feature is useless:
+
+Adjusted R² decreases or stays the same.
+Formula
+Adjusted R**2 = 1−(1−R**2)(n−1/n−p−1)
+
+
+Where:
+
+n = Number of observations
+p = Number of independent variables (features)
+Why is Adjusted R² Better?
+
+Suppose:
+
+Model 1
+
+Features:
+
+Area
+Bedrooms
+R² = 0.85
+Adjusted R² = 0.84
+
+Now add:
+
+House Number
+
+Results:
+
+R² = 0.86
+Adjusted R² = 0.83
+
+Although R² increased, Adjusted R² decreased.
+
+This tells us the new feature is not useful.
+
+Comparison
+R²	Adjusted R²
+Measures model fit	Measures model fit
+Always increases or stays the same when adding features	Can increase or decrease
+Cannot detect useless features	Penalizes useless features
+Better for Simple Linear Regression	Better for Multiple Linear Regression
+Python Implementation
+from sklearn.metrics import r2_score
+
+r2 = r2_score(y_test, y_pred)
+
+print("R² Score:", r2)
+Calculate Adjusted R²
+n = X_test.shape[0]      # Number of samples
+p = X_test.shape[1]      # Number of features
+
+adjusted_r2 = 1 - ((1 - r2) * (n - 1) / (n - p - 1))
+
+print("Adjusted R²:", adjusted_r2)
+Example
+
+Suppose:
+
+R² = 0.90
+
+Interpretation:
+
+The model explains 90% of the variation in the target variable.
+
+Now add five irrelevant features.
+
+Results:
+
+R² = 0.91
+
+Adjusted R² = 0.87
+
+The decrease in Adjusted R² indicates that the added features are not contributing meaningful information.
+
+When Should We Use R²?
+
+Use R² when:
+
+Simple Linear Regression
+Understanding overall model fit
+When Should We Use Adjusted R²?
+
+Use Adjusted R² when:
+
+Multiple Linear Regression
+Comparing models with different numbers of features
+Performing feature selection
+Interview Questions
+1. What is R²?
+
+R² measures the proportion of the variance in the target variable that is explained by the regression model.
+
+2. What does an R² value of 0.80 mean?
+
+The model explains 80% of the variation in the target variable, while the remaining 20% is due to factors not captured by the model.
+
+3. Can R² be negative?
+
+Yes. A negative R² means the model performs worse than predicting the mean of the target variable.
+
+4. Why do we need Adjusted R²?
+
+Because R² always increases (or remains the same) when new features are added, even if those features are irrelevant. Adjusted R² penalizes unnecessary features.
+
+5. When should you prefer Adjusted R² over R²?
+
+In Multiple Linear Regression, especially when comparing models with different numbers of features.
+
+6. Does a higher R² always mean a better model?
+
+No. A high R² does not guarantee good generalization. A model can still overfit the training data, so R² should be evaluated along with metrics like RMSE, MAE, and performance on unseen test data.
