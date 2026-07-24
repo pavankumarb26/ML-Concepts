@@ -1,0 +1,198 @@
+Multiple Linear Regression using Python and Scikit-learn
+What is Multiple Linear Regression?
+
+Multiple Linear Regression (MLR) is an extension of Simple Linear Regression where more than one independent variable (feature) is used to predict a dependent variable.
+
+Simple Linear Regression
+
+Uses only one input feature.
+
+Example:
+
+Salary = f(Years of Experience)
+Multiple Linear Regression
+
+Uses multiple input features.
+
+Example:
+
+House Price = f(Area, Bedrooms, Age, Location)
+
+Y=β0​+β1​X1​+β2​X2​+β3​X3​+⋯+βn​Xn​
+
+Y → Target (Dependent Variable)
+β₀ → Intercept
+β₁, β₂...βₙ → Coefficients
+X₁, X₂...Xₙ → Independent Variables
+Real-Life Example
+
+Suppose we want to predict house price.
+
+Area	Bedrooms	Age	Price
+1200	2	10	45L
+1500	3	5	60L
+1800	3	2	72L
+
+Here,
+Features (X):
+Area
+Bedrooms
+Age
+Target (Y):
+
+House Price
+Assumptions of Multiple Linear Regression
+Linear relationship
+No Multicollinearity
+Homoscedasticity
+Normally distributed residuals
+No autocorrelation
+No significant outliers
+Implementation using Python and Scikit-learn
+Step 1: Import Libraries
+    import pandas as pd
+    from sklearn.model_selection import train_test_split
+    from sklearn.linear_model import LinearRegression
+    from sklearn.metrics import mean_squared_error, r2_score
+Step 2: Load Dataset
+    df = pd.read_csv("house_price.csv")
+
+Example dataset
+
+Area	Bedrooms	Age	Price
+1200	2	10	45
+1500	3	5	60
+1800	3	2	72
+Step 3: Select Features and Target
+    X = df[['Area', 'Bedrooms', 'Age']]
+    y = df['Price']
+
+Notice:
+
+X contains multiple columns.
+y contains one column.
+Step 4: Train-Test Split
+    X_train, X_test, y_train, y_test = train_test_split(
+        X,
+        y,
+        test_size=0.2,
+        random_state=42
+    )
+Step 5: Create Model
+    model = LinearRegression()
+Step 6: Train Model
+    model.fit(X_train, y_train)
+
+The model learns:
+
+Intercept
+Coefficients for every feature
+Step 7: Make Predictions
+    y_pred = model.predict(X_test)
+Step 8: Evaluate Model
+Mean Squared Error
+    mse = mean_squared_error(y_test, y_pred)
+    print(mse)
+R² Score
+    r2 = r2_score(y_test, y_pred)
+    print(r2)
+Step 9: View Learned Parameters
+Intercept
+    print(model.intercept_)
+Coefficients
+    print(model.coef_)
+
+Example Output
+
+Intercept = 4.8
+
+Coefficients
+
+Area      = 0.035
+Bedrooms  = 2.1
+Age       = -0.6
+
+Interpretation:
+
+Every extra square foot increases price by 0.035 units (keeping other features constant).
+One extra bedroom increases price by 2.1 units.
+One additional year of house age decreases price by 0.6 units.
+Predict New Data
+new_house = [[1700, 3, 4]]
+
+prediction = model.predict(new_house)
+
+print(prediction)
+
+Output
+
+[66.5]
+Complete Code
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error, r2_score
+
+# Load dataset
+df = pd.read_csv("house_price.csv")
+
+# Features and Target
+X = df[['Area', 'Bedrooms', 'Age']]
+y = df['Price']
+
+# Split
+X_train, X_test, y_train, y_test = train_test_split(
+    X,
+    y,
+    test_size=0.2,
+    random_state=42
+)
+
+# Create model
+model = LinearRegression()
+
+# Train
+model.fit(X_train, y_train)
+
+# Predict
+y_pred = model.predict(X_test)
+
+# Evaluation
+print("MSE:", mean_squared_error(y_test, y_pred))
+print("R2 Score:", r2_score(y_test, y_pred))
+
+# Parameters
+print("Intercept:", model.intercept_)
+print("Coefficients:", model.coef_)
+
+# Predict new sample
+sample = [[1700, 3, 4]]
+print("Prediction:", model.predict(sample))
+Interview Questions
+1. What is Multiple Linear Regression?
+
+It predicts a target variable using two or more independent variables.
+
+2. Difference between Simple and Multiple Linear Regression?
+Simple	Multiple
+One feature	Multiple features
+One coefficient	Multiple coefficients
+3. What does fit() do?
+
+It learns the best intercept and coefficients from the training data.
+
+4. What does predict() do?
+
+It uses the learned equation to predict values for new data.
+
+5. What does coef_ represent?
+
+The weight (importance) of each feature in the model.
+
+6. What does intercept_ represent?
+
+The predicted value of the target when all input features are 0.
+
+7. Why do we split the dataset?
+
+To evaluate how well the model performs on unseen data and avoid overfitting.
